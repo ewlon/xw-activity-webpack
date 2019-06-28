@@ -13,7 +13,7 @@
         components:{XwLogin,XwHeader},
         data(){
             return {
-                headSrc : '/static/header-img.png',
+                headSrc : '/static/images/header-img.png',
                 isLogin: false,
             }
         }
