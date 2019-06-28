@@ -1,7 +1,7 @@
 <template>
     <xw-popup>
         <div class="popup-container">
-            <div class="popup-head"><a href="javascript: void (0);" class="popup-close-btn"><img src="/static/popup-close-btn.png" alt=""></a></div>
+            <div class="popup-head"><a href="javascript: void (0);" class="popup-close-btn"><img src="/static/images/popup-close-btn.png" alt=""></a></div>
             <div class="popup-body">
                 <div class="popup-content-box">
                     <div class="popup-tst-box">
