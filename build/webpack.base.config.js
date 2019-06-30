@@ -2,9 +2,10 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin') // 复制静态资源的插件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 清空打包目录的插件
+const MiniCssExtractPlugin = require("mini-css-extract-plugin") // 提取css
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const chalk = require('chalk');
-
+var envMode = process.env.NODE_ENV !== "production";
 
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
@@ -40,17 +41,26 @@ module.exports ={
             },
             {
                 test: /\.css$/,
-                use: ['style-loader','css-loader','postcss-loader']
+                use: [
+                    envMode? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader'
+                ]
             },
             {
-                test: /\.scss$/,
+                test: /\.(sc|sa)ss$/,
                 use: [
-                    "style-loader", // creates style nodes from JS strings
-                    'css-loader',  // translates CSS into CommonJS
+                    envMode? 'style-loader' : MiniCssExtractPlugin.loader, // creates style nodes from JS strings
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: envMode,
+                        }
+                    },  // translates CSS into CommonJS
                     {
                         loader: 'postcss-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: envMode,
                             config: {
                                 path: 'postcss.config.js'
                             }
@@ -58,7 +68,7 @@ module.exports ={
                     },
                     {
                         loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
-                        options: { sourceMap: true }
+                        options: { sourceMap: envMode }
                     }
                 ]
             },
