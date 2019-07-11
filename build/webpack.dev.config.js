@@ -1,5 +1,4 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
 const baseWebpackConfig = require('./webpack.base.config')
@@ -37,9 +36,8 @@ module.exports = merge(baseWebpackConfig,{
         poll:1000 //每秒询问的文件变更的次数
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: path.join(__dirname, "..","src","index.html"),
-        }),
+
+
         new webpack.HotModuleReplacementPlugin(), //HMR
         // new webpack.NamedModulesPlugin() // HMR
     ]
