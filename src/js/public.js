@@ -19,7 +19,7 @@
         if (document.documentElement && document.documentElement.clientHeight) {
             winHeight = document.documentElement.clientHeight;
         }
-        document.querySelectorAll('.wrapper').forEach(function (item) {
+        document.querySelectorAll('body').forEach(function (item) {
             item.style.minHeight=winHeight + 'px';
         })
     }
