@@ -16,7 +16,6 @@
 
 html{
     font-size: 20px;
-    height: 100%;
 }
 
 body {
@@ -28,7 +27,6 @@ body {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
-    min-height: 100%;
     position: relative;
 
 }
